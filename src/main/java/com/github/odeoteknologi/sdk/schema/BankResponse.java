@@ -10,9 +10,10 @@ import com.github.odeoteknologi.sdk.instance.Bank;
 
 public class BankResponse {
 
-	protected ArrayList<Bank> banks = new ArrayList<Bank>();
+	protected ArrayList<Bank> banks;
 	
 	public BankResponse(JSONObject object) {
+		this.banks =  new ArrayList<Bank>();
 		JSONArray arr = (JSONArray) object.get("banks");
 		Iterator i = arr.iterator();
 		while(i.hasNext()) {
