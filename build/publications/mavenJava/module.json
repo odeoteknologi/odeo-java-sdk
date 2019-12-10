@@ -1,0 +1,93 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.odeoteknologi",
+    "module": "odeo-java-sdk",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.0.1",
+      "buildId": "l5p5m27nbneatcfn57bbhh3tmu"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.googlecode.json-simple",
+          "module": "json-simple",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.apache.httpcomponents",
+          "module": "httpclient",
+          "version": {
+            "requires": "4.5.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "odeo-java-sdk-1.0.0.jar",
+          "url": "odeo-java-sdk-1.0.0.jar",
+          "size": 20365,
+          "sha512": "41ca638e6dad3150f390e9b7e365da94cae5572f88f78f1b7937c2d9845f26075422cfb4df6bdabdc2619f59685e6f30c8719184209b9566aec5d26964854eb",
+          "sha256": "808a1deb984399453c10d97262a2a65b89c67d06a2feee5857eeef8cfc653829",
+          "sha1": "e67f832c356b55ff0247d50950d39da417f51e4a",
+          "md5": "43142ec02f45b2eb72e3d18149c824f6"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.googlecode.json-simple",
+          "module": "json-simple",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "org.apache.httpcomponents",
+          "module": "httpclient",
+          "version": {
+            "requires": "4.5.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "odeo-java-sdk-1.0.0.jar",
+          "url": "odeo-java-sdk-1.0.0.jar",
+          "size": 20365,
+          "sha512": "41ca638e6dad3150f390e9b7e365da94cae5572f88f78f1b7937c2d9845f26075422cfb4df6bdabdc2619f59685e6f30c8719184209b9566aec5d26964854eb",
+          "sha256": "808a1deb984399453c10d97262a2a65b89c67d06a2feee5857eeef8cfc653829",
+          "sha1": "e67f832c356b55ff0247d50950d39da417f51e4a",
+          "md5": "43142ec02f45b2eb72e3d18149c824f6"
+        }
+      ]
+    }
+  ]
+}

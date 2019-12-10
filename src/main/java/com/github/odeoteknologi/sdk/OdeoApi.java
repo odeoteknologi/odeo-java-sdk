@@ -64,7 +64,7 @@ public class OdeoApi {
         this.baseUrl = "http://api.v2.staging.odeo.co.id";
     }
 
-    protected long getUnixTimestamp() {
+    public long getUnixTimestamp() {
         return System.currentTimeMillis() / 1000;
     }
 
@@ -80,9 +80,9 @@ public class OdeoApi {
         return "";
     }
 
-    protected String generateSignature(String httpMethod, String path, String query, String timestamp, String requestBody) throws NoSuchAlgorithmException, InvalidKeyException {
+    public String generateSignature(String httpMethod, String path, String query, String accessToken, String timestamp, String requestBody) throws NoSuchAlgorithmException, InvalidKeyException {
         String bodyHash = this.generateBodyHash(requestBody);
-        String stringToSign = String.join(":", new String[] {httpMethod.toUpperCase(), path, query, this.accessToken, String.valueOf(timestamp), bodyHash});
+        String stringToSign = String.join(":", new String[] {httpMethod.toUpperCase(), path, query, accessToken, timestamp, bodyHash});
 
         Mac mac = Mac.getInstance("HmacSHA256");
         SecretKeySpec secretKey = new SecretKeySpec(this.signingKey.getBytes(), "HmacSHA256");
@@ -91,15 +91,20 @@ public class OdeoApi {
         return Base64.getEncoder().encodeToString(mac.doFinal(stringToSign.getBytes()));
     }
 
-    public boolean isValidSignature(String signature, String httpMethod, String path, String query, String timestamp, String requestBody) throws InvalidKeyException, NoSuchAlgorithmException {
-        return signature.equals(this.generateSignature(httpMethod, path, query, timestamp, requestBody));
+    public boolean isValidSignature(String signature, String httpMethod, String path, String query, String accessToken, String timestamp, String requestBody) throws InvalidKeyException, NoSuchAlgorithmException {
+        String validSignature = this.generateSignature(httpMethod, path, query, accessToken, timestamp, requestBody);
+        return this.isValidSignature(signature, validSignature);
+    }
+
+    public boolean isValidSignature(String signature, String signatureToCompare) {
+        return signature.equals(signatureToCompare);
     }
 
     public JSONObject createApiRequest(String method, String path, String requestBody, boolean withHeader) throws Exception {
         JSONObject response = null;
         switch (method) {
             case "GET":
-                response = this.executeApiGet(path, requestBody);
+                response = this.executeApiGet(path, requestBody, withHeader);
                 break;
             case "POST":
                 response = this.executeApiPost(path, requestBody, withHeader);
@@ -119,7 +124,7 @@ public class OdeoApi {
         this.accessToken = accessToken;
     }
 
-    private JSONObject executeApiPost(String path, String requestBody, boolean withHeader) throws Exception {
+    public JSONObject executeApiPost(String path, String requestBody, boolean withHeader) throws Exception {
         HttpPost request = new HttpPost(this.baseUrl + path);
 
         if (withHeader) {
@@ -133,9 +138,13 @@ public class OdeoApi {
         return this.logAndResponse(requestBody, response);
     }
 
-    private JSONObject executeApiGet(String path, String requestBody) throws Exception {
+    public JSONObject executeApiGet(String path, String requestBody, boolean withHeader) throws Exception {
         HttpGet request = new HttpGet(this.baseUrl + path);
-        this.setRequestHeaders(request, "GET", path, requestBody);
+
+        if (withHeader) {
+            this.setRequestHeaders(request, "GET", path, requestBody);
+        }
+
         HttpResponse response = httpClient.execute(request);
 
         return this.logAndResponse(requestBody, response);
@@ -143,7 +152,7 @@ public class OdeoApi {
 
     private void setRequestHeaders(HttpGet request, String method, String path, String requestBody) throws InvalidKeyException, NoSuchAlgorithmException {
         String timestamp = String.valueOf(this.getUnixTimestamp());
-        String signature = this.generateSignature(method, path, "", timestamp, requestBody);
+        String signature = this.generateSignature(method, path, "", this.accessToken, timestamp, requestBody);
 
         request.addHeader("Authorization", "Bearer " + this.accessToken);
         request.addHeader("X-Odeo-Timestamp", timestamp);
@@ -153,7 +162,7 @@ public class OdeoApi {
 
     private void setRequestHeaders(HttpPost request, String method, String path, String requestBody) throws InvalidKeyException, NoSuchAlgorithmException {
         String timestamp = String.valueOf(this.getUnixTimestamp());
-        String signature = this.generateSignature(method, path, "", timestamp, requestBody);
+        String signature = this.generateSignature(method, path, "", this.accessToken, timestamp, requestBody);
 
         request.addHeader("Authorization", "Bearer " + this.accessToken);
         request.addHeader("X-Odeo-Timestamp", String.valueOf(this.getUnixTimestamp()));
@@ -171,7 +180,7 @@ public class OdeoApi {
         if (response.getStatusLine().getStatusCode() == 200) {
             return;
         }
-        throw new InvalidStatusCodeException("Error: " + responseString);
+        throw new InvalidStatusCodeException(responseString);
     }
 
     private void logHeaders(String timestamp, String signature) {
