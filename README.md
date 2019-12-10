@@ -144,7 +144,7 @@ DisbursementResponse response = disbursement.checkByReferenceId(referenceId); //
 import com.github.odeoteknologi.sdk.service.Disbursement;
 // ...
 PaymentGateway pg = new PaymentGateway();
-api.setStagingEnvironment(); // set environment
+pg.setStagingEnvironment(); // set environment
 pg.setApiCredentials(clientId, clientSecret, SigningKey);
 pg.requestAccessToken();
 // ...
@@ -161,13 +161,13 @@ Validating callbacks:
 ```java
 // ...
 String generatedSignature = pg.generateSignature(method, path, "", "", timestamp, requestBody);
-if (api.isValidSignature(callbackSignature, generatedSignature)) {
+if (pg.isValidSignature(callbackSignature, generatedSignature)) {
     // ... if valid
 } else {
     // ... if invalid
 }
 // or
-if (api.isValidSignature(callbackSignature, method, path, "", "", timestamp, requestBod)) {
+if (pg.isValidSignature(callbackSignature, method, path, "", "", timestamp, requestBod)) {
     // ... if valid
 } else {
     // ... if invalid
