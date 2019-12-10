@@ -91,6 +91,10 @@ public class OdeoApi {
         return Base64.getEncoder().encodeToString(mac.doFinal(stringToSign.getBytes()));
     }
 
+    public boolean isValidSignature(String signature, String httpMethod, String path, String query, String timestamp, String requestBody) throws InvalidKeyException, NoSuchAlgorithmException {
+        return signature.equals(this.generateSignature(httpMethod, path, query, timestamp, requestBody));
+    }
+
     public JSONObject createApiRequest(String method, String path, String requestBody, boolean withHeader) throws Exception {
         JSONObject response = null;
         switch (method) {
