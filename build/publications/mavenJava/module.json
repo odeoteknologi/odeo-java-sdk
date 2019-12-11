@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.0.1",
-      "buildId": "l5p5m27nbneatcfn57bbhh3tmu"
+      "buildId": "fcmxeqp4onfoleuwbuwxdozlrq"
     }
   },
   "variants": [
@@ -44,11 +44,11 @@
         {
           "name": "odeo-java-sdk-1.0.0.jar",
           "url": "odeo-java-sdk-1.0.0.jar",
-          "size": 20365,
-          "sha512": "41ca638e6dad3150f390e9b7e365da94cae5572f88f78f1b7937c2d9845f26075422cfb4df6bdabdc2619f59685e6f30c8719184209b9566aec5d26964854eb",
-          "sha256": "808a1deb984399453c10d97262a2a65b89c67d06a2feee5857eeef8cfc653829",
-          "sha1": "e67f832c356b55ff0247d50950d39da417f51e4a",
-          "md5": "43142ec02f45b2eb72e3d18149c824f6"
+          "size": 18947,
+          "sha512": "a1475d3bc64adedf3f7417f2ee1915b5357a304f8a6b00610b0bbb503f57eb1eb01ad381dc3bf67889e7e79e4f633e09bc61a4ebaf6c9dedc2937f1fdee70a6",
+          "sha256": "f6a44b701cf176b8b90871ab3b63d3c8e3f67acc1b7c00e0cd6d25191f48e2ad",
+          "sha1": "3cfdf8465deccb54f8dba951e6184fe033ff901d",
+          "md5": "df7b3e8657b4bf6a1ddb26d98f92546f"
         }
       ]
     },
@@ -81,11 +81,11 @@
         {
           "name": "odeo-java-sdk-1.0.0.jar",
           "url": "odeo-java-sdk-1.0.0.jar",
-          "size": 20365,
-          "sha512": "41ca638e6dad3150f390e9b7e365da94cae5572f88f78f1b7937c2d9845f26075422cfb4df6bdabdc2619f59685e6f30c8719184209b9566aec5d26964854eb",
-          "sha256": "808a1deb984399453c10d97262a2a65b89c67d06a2feee5857eeef8cfc653829",
-          "sha1": "e67f832c356b55ff0247d50950d39da417f51e4a",
-          "md5": "43142ec02f45b2eb72e3d18149c824f6"
+          "size": 18947,
+          "sha512": "a1475d3bc64adedf3f7417f2ee1915b5357a304f8a6b00610b0bbb503f57eb1eb01ad381dc3bf67889e7e79e4f633e09bc61a4ebaf6c9dedc2937f1fdee70a6",
+          "sha256": "f6a44b701cf176b8b90871ab3b63d3c8e3f67acc1b7c00e0cd6d25191f48e2ad",
+          "sha1": "3cfdf8465deccb54f8dba951e6184fe033ff901d",
+          "md5": "df7b3e8657b4bf6a1ddb26d98f92546f"
         }
       ]
     }
