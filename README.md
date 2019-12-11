@@ -95,7 +95,12 @@ if (api.isValidSignature(callbackSignature, method, path, "", accessToken, times
     // ... if invalid
 }
 ```
-
+`OdeoApi` also logs your recent api calls. This will help you to check the request headers and body that was generated when you're calling an API request:
+```java
+// ...
+System.out.println(api.getLatestLog());
+// ...
+```
 ### Disbursement
 `Disbursement` class extends from `OdeoApi` so you can use the public method provided by `OdeoApi`. 
 `Disbursement` created to help developers to call Disbursement API Request easily.
