@@ -146,7 +146,7 @@ DisbursementResponse response = disbursement.checkByReferenceId(referenceId); //
 ### PaymentGateway
 `PaymentGateway` also extends from `OdeoApi`. This class created to help developers to call Payment Gateway API and can be used to validate callbacks.
 ```java
-import com.github.odeoteknologi.sdk.service.Disbursement;
+import com.github.odeoteknologi.sdk.service.PaymentGateway;
 // ...
 PaymentGateway pg = new PaymentGateway();
 pg.setStagingEnvironment(); // set environment
