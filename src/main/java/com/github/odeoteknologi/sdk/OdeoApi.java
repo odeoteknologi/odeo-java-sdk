@@ -64,6 +64,10 @@ public class OdeoApi {
         this.baseUrl = "http://api.v2.staging.odeo.co.id";
     }
 
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
     public long getUnixTimestamp() {
         return System.currentTimeMillis() / 1000;
     }

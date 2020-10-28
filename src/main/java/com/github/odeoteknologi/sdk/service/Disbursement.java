@@ -41,7 +41,7 @@ public class Disbursement extends OdeoApi {
 	}
 
 	public DisbursementResponse checkByReferenceId(String referenceId) throws Exception {
-		this.json = this.createApiRequest("GET", "/dg​/v1​/disbursements​/reference-id​/" + referenceId, "", true);
+		this.json = this.createApiRequest("GET", "/dg/v1/disbursements/reference-id/" + referenceId, "", true);
 		return new DisbursementResponse(this.json);
 	}
 	

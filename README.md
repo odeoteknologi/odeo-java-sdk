@@ -43,10 +43,10 @@ import com.github.odeoteknologi.sdk.OdeoApi;
 OdeoApi api = new OdeoApi(); // initialize class
 disbursement.setApiCredentials(clientId, clientSecret, signingKey);
 ```
-Set your development environment:
+Set API Base url:
 ```java
-api.setStagingEnvironment(); // set api calls to http://api.v2.staging.odeo.co.id
-api.setProductionEnvironment(); // set api calls to https://api.v2.odeo.co.id
+String baseUrl = "https://api.v2.dev.odeo.co.id/"
+api.setBaseUrl(baseUrl);
 ```
 Requesting and setting access token:
 ```java
